@@ -17,9 +17,9 @@
   
 		<static-files>
         <include path="/**.png" expiration="10m"/>
-        <exclude path="/**.jpeg" expiration="10m"/>
-        <exclude path="/**.jpg" expiration="10m"/>
-        <exclude path="/**.html" expiration="10m"/>
+        <include path="/**.jpeg" expiration="10m"/>
+        <include path="/**.jpg" expiration="10m"/>
+        <include path="/**.html" expiration="10m"/>
     </static-files>
 
   <!--
