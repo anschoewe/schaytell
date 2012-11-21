@@ -23,18 +23,87 @@
   			color: black;
 			}
 			
-			body { background-color: #FFF; }
+			body { 
+				background-color: #FFF; 
+				padding: 0px;
+				margin: 0px;
+			}
 			
+			div {
+				float: left;
+				text-align: center;	
+				width: 100%;
+			}
+	
+			div.logo {
+  				font-family: "bodedo",sans-serif;
+  				font-weigth: 300;
+  				font-style: normal;
+  				font-size: 40px;
+				width: 33%;
+				text-align: left;
+				border: 1px solid black;
+	
+			}
+
+			div.header {
+				background-color: #AA0;
+				padding : 5px;
+				margin-right: -5px;
+			}
+
+			div.headerCol {
+				padding: 5px;
+				width: 30%;
+			}
+
+			p.menuItem {
+				display: block;		
+				text-align: left;
+				font-size: 18px;
+				margin: 5px;
+			}
+				
 			.bodyDiv { 
 				text-align: center;
-				}
+				padding: 0px ;
+				width: 100%;
+			}
+			
+			h2 {
+				
+			}
+
+			div.bodyContent {
+				width: 768px;
+			}
 		</style>
   </head>
-
   <body>
   	<div class="bodyDiv">
-  		<br/>	
-    	<p class="headline">Coming Fall 2013</p>
+		<div class="header">		
+			<div class="logo">
+				Fall. <br/>
+				In Love.
+			</div>
+			<div class="headerCol">
+				<p class="menuItem">Welcome</p>		
+				<p class="menuItem">Festivities</p>		
+				<p class="menuItem">Accommodations</p>		
+			</div>
+			<div class="headerCol">
+				<p class="menuItem">Things to Do</p>		
+				<p class="menuItem">Getting Around</p>		
+				<p class="menuItem">RSVP</p>		
+			</div>
+    		</div>
+		<div class="bodyContent">
+			<h2>Welcome</h2>
+		
+			<h2>Festivities</h2>
+			<h2>Accommodations</h2>
+		</div>
+
     </div>
   </body>
 </html>
