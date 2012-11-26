@@ -20,6 +20,8 @@
         <include path="/**.jpeg" expiration="10m"/>
         <include path="/**.jpg" expiration="10m"/>
         <include path="/**.html" expiration="10m"/>
+        <include path="/**.js" expiration="10m"/>
+        <include path="/**.css" expiration="10m"/>
     </static-files>
 
   <!--

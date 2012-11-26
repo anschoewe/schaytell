@@ -20,8 +20,12 @@
 		<link rel="stylesheet" href="js/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
 		<script type="text/javascript" src="js/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 		
+		<script type="text/javascript" src="js/qTip2/dist/jquery.qtip.min.js"></script>
+		<link type="text/css" rel="stylesheet" href="js/qTip2/dist/jquery.qtip.css" />
+		
 		<script type="text/javascript">
 			$(document).ready(function() {
+				
 				$(".fancybox").fancybox({
 					prevEffect	: 'none',
 					nextEffect	: 'none',
@@ -36,13 +40,99 @@
 					}
 				});
 				
+				// A shared object containing all the values you want shared between your tooltips
+				var shared = {
+					content: 'An example tooltip',
+					position: {
+						my: 'top left', 
+						at: 'bottom left',
+						target: $('.dayContainer')
+					}
+				};
+				
+				/*
+				$('div.friday.day').hover(
+				  function () {
+					alert($('div.friday.day').offset().top);
+				  }
+				);
+				*/
+				
+				$('div.friday.day').qtip( $.extend({}, shared, { 
+					content: 'Friday details',
+					position: {
+						adjust: {
+							x: -118
+						}
+					},
+					style: {
+						classes: 'dayToolTip ui-tooltip-shadow',
+						tip: {
+							corner : true,
+							mimic: 'top center',
+							width: 20,
+							height: 10,
+							offset: 90
+						}
+					}
+				}));
+				
+				$('div.saturday.day').qtip( $.extend({}, shared, { 
+					content: 'Saturday details',
+					position: {
+						adjust: {
+							x: -125
+						}
+					},
+					style: {
+						classes: 'dayToolTip ui-tooltip-shadow',
+						tip: {
+							corner : true,
+							mimic: 'top center',
+							width: 20,
+							height: 10,
+							offset: 310
+						}
+					}
+				}));
+				
+				$('div.sunday.day').qtip( $.extend({}, shared, { 
+					content: 'Sunday details',
+					position: {
+						adjust: {
+							x: -130
+						}
+					},
+					style: {
+						classes: 'dayToolTip ui-tooltip-shadow',
+						tip: {
+							corner : true,
+							mimic: 'top center',
+							width: 20,
+							height: 10,
+							offset: 530
+						}
+					}
+				}));
+				
+				//alert($('div.friday.day').offset().top);
+
+				/*
+				$(".menuItem").click(function(){
+					$('html, body').animate({
+						scrollTop: $( $(this).attr('href') ).offset().top
+					}, 500);
+					return false;
+				});​
+				*/
+				
 			});
 		</script>
 		
 		<style>
 			p.headline {
   				font-family: "bodedo",sans-serif;
-  				font-weigth: 400;
+  				font-weight: 400;
   				font-style: normal;
   				font-size:48px;
   				color: black;
@@ -59,22 +149,29 @@
 				text-align: center;	
 				width: 100%;
 			}
+			
+			p { 
+				font-family: "calluna",sans-serif;
+			}
 	
 			div.logo {
-  				font-family: "bodedo",sans-serif;
-  				font-weigth: 300;
-  				font-style: normal;
-  				font-size: 40px;
-				width: 33%;
+ 				font-family: "bodedo",sans-serif;
+ 				font-weight: 300;
+ 				font-style: normal;
+ 				font-size: 40px;
+				width: 27%;
 				text-align: left;
 				border: 1px solid black;
-	
 			}
 
 			div.header {
 				background-color: #AA0;
 				padding : 5px;
 				margin-right: -5px;
+				/*position: fixed;
+				top: 0px;
+				left: 0px;
+				*/
 			}
 
 			div.headerCol {
@@ -93,21 +190,86 @@
 				text-align: center;
 				padding: 0px ;
 				width: 100%;
+				/*position: absolute;
+				top: 105px;*/
 			}
 			
 			h2 {
-				
+				margin: 10px 0px;
+				text-align: left;
+				font-family: "bodedo",sans-serif;
+  			font-style: normal;
+  			font-size: 35px;
 			}
 
 			div.bodyContent {
 				width: 768px;
 				margin: 0 auto;
-				text-align: center;
+				text-align: left;
 				float:center;	
 				border: 1px solid black;
 			}
 			
+			div.bodyContent div.sectionContainer {
+				margin: 10px 0px;
+			}
+			
+			div.bodyContent p {
+				padding: 5px 40px;
+			}
+			
 			.hidden { display: none; }
+			
+			div.dayContainer {
+				margin: 0px 40px;
+			}
+			
+			div.day {
+				text-align: center;
+				width: 175px;
+				padding: 15px;
+				margin: 0px 10px;
+				border: 1px solid red;
+			}
+			
+			span.day {
+			  	font-family: "bodedo",sans-serif;
+  				font-weigth: 300;
+  				font-style: normal;
+  				font-size: 40px;
+			}
+			
+			span.event {
+			  	font-family: "calluna",sans-serif;
+  				font-weight: 700;
+  				font-style: bold;
+  				color: purple;
+  				font-weigth: 500;
+  				font-size: 20px;
+			}
+			
+			/* Pick whatever class name you want */
+			.dayToolTip {
+				max-width: 660px;
+				min-width: 660px;
+				min-height: 200px;
+			}
+			
+			/*! Add shadows to your tooltips in: FF3+, Chrome 2+, Opera 10.6+, IE5.5+, Safari 2+ */
+			.ui-tooltip-shadow{
+				-webkit-box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.35);
+				-moz-box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.35);
+				box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.35);
+			}
+ 
+			.ui-tooltip-shadow .ui-tooltip-titlebar,
+			.ui-tooltip-shadow .ui-tooltip-content{
+				filter: progid:DXImageTransform.Microsoft.Shadow(Color='gray', Direction=135, Strength=3);
+				-ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Color='gray', Direction=135, Strength=3)";
+		 
+				_margin-bottom: -3px; /* IE6 */
+				.margin-bottom: -3px; /* IE7 */
+			}
 		</style>
   </head>
   <body>
@@ -115,12 +277,12 @@
 		<div class="header">		
 			<div class="logo">
 				Fall. <br/>
-				In Love.
+				In Love.&nbsp;&nbsp;10.19.13
 			</div>
 			<div class="headerCol">
-				<p class="menuItem">Welcome</p>		
-				<p class="menuItem">Festivities</p>		
-				<p class="menuItem">Accommodations</p>		
+				<p class="menuItem"><a class="menuItem" href="#welcome">Welcome</a></p>		
+				<p class="menuItem"><a class="menuItem" href="#festivities">Festivities</a></p>		
+				<p class="menuItem"><a class="menuItem" href="#accommodations">Accommodations</a></p>		
 			</div>
 			<div class="headerCol">
 				<p class="menuItem">Things to Do</p>		
@@ -129,23 +291,54 @@
 			</div>
     		</div>
 		<div class="bodyContent">
-			<h2>Welcome</h2>
-				<p> About us.... </p>
+			<div class="sectionContainer">
+				<a name="welcome"></a>
+				<h2>Welcome</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis nisl lacus, sit amet scelerisque magna. Nam pharetra, neque at lobortis facilisis, turpis turpis iaculis velit, ut tempor sapien ipsum sed mi. Nulla vel lacus id quam ornare fringilla eu vitae mi. Donec sit amet purus felis, sit amet tempor nisl. Nulla in magna eros, et dignissim ante. Phasellus sed metus a est porttitor eleifend id at tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis neque mauris, semper sit amet sodales id, ultricies faucibus magna. Sed euismod pellentesque odio, vel tincidunt nulla facilisis in. Nunc odio nunc, eleifend eget porttitor id, feugiat sed sem. Vivamus laoreet vulputate felis, ut iaculis nibh dignissim ut. Praesent pellentesque molestie metus, ut adipiscing risus congue et. Maecenas nec dui quis odio semper dapibus non non dolor. Nam faucibus tincidunt elementum.</p>
+
 				<div id="slides" class="imageContent">
-						<a class="fancybox" rel="fancybox-thumb" href="image/day1.jpg">
-							<img src="image/day1.jpg" alt="" />
-						</a>
-					<div class="hidden">
-						<a class="fancybox" rel="fancybox-thumb" href="image/eyesopen.jpg">
-							<img src="image/eyesopen.jpg" alt="" />
-						</a>
-						<a class="fancybox" rel="fancybox-thumb" href="image/duckiesfrog.jpg">
-							<img src="image/duckiesfrog.jpg" alt="" />
-						</a>
+							<a class="fancybox" rel="fancybox-thumb" href="image/day1.jpg">
+								<img src="image/day1.jpg" alt="" />
+							</a>
+						<div class="hidden">
+							<a class="fancybox" rel="fancybox-thumb" href="image/eyesopen.jpg">
+								<img src="image/eyesopen.jpg" alt="" />
+							</a>
+							<a class="fancybox" rel="fancybox-thumb" href="image/duckiesfrog.jpg">
+								<img src="image/duckiesfrog.jpg" alt="" />
+							</a>
+						</div>
 					</div>
-				</div>	
+				</div>
+			<div class="sectionContainer">
+			<a name="festivities" id="festivities"></a>	
 			<h2>Festivities</h2>
+			<div class="dayContainer">
+				<div class="day friday">
+					<span class="day">FRI</span><br/>
+					<span class="event">Drinks & Desserts</span><br/>
+					<span class="time">8pm</span><br/>
+					<span class="location">Willow Lake</span>
+				</div>
+				<div class="day saturday">
+					<span class="day">SAT</span><br/>
+					<span class="event">Wedding!</span><br/>
+					<span class="time">4pm</span><br/>
+					The Garrison
+				</div>
+				<div class="day sunday">
+					<span class="day">SUN</span><br/>
+					<span class="event">Brunch</span><br/>
+					<span class="time">10am</span><br/>
+					<span class="location">Your Mom's House</span>
+				</div>
+			</div>
+			</div>
+			<div class="sectionContainer">
+			<a name="accommodations"></a>
 			<h2>Accommodations</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis nisl lacus, sit amet scelerisque magna. Nam pharetra, neque at lobortis facilisis, turpis turpis iaculis velit, ut tempor sapien ipsum sed mi. Nulla vel lacus id quam ornare fringilla eu vitae mi. Donec sit amet purus felis, sit amet tempor nisl. Nulla in magna eros, et dignissim ante. Phasellus sed metus a est porttitor eleifend id at tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis neque mauris, semper sit amet sodales id, ultricies faucibus magna. Sed euismod pellentesque odio, vel tincidunt nulla facilisis in. Nunc odio nunc, eleifend eget porttitor id, feugiat sed sem. Vivamus laoreet vulputate felis, ut iaculis nibh dignissim ut. Praesent pellentesque molestie metus, ut adipiscing risus congue et. Maecenas nec dui quis odio semper dapibus non non dolor. Nam faucibus tincidunt elementum.</p>
+			</div>
 		</div>
 
     </div>
