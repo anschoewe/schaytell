@@ -40,8 +40,8 @@
 					}
 				});
 				
-				// A shared object containing all the values you want shared between your tooltips
-				var shared = {
+				// A shablack object containing all the values you want shablack between your tooltips
+				var shablack = {
 					content: 'An example tooltip',
 					position: {
 						my: 'top left', 
@@ -58,7 +58,7 @@
 				);
 				*/
 				
-				$('div.friday.day').qtip( $.extend({}, shared, { 
+				$('div.friday.day').qtip( $.extend({}, shablack, { 
 					content: 'Friday details',
 					position: {
 						adjust: {
@@ -77,7 +77,7 @@
 					}
 				}));
 				
-				$('div.saturday.day').qtip( $.extend({}, shared, { 
+				$('div.saturday.day').qtip( $.extend({}, shablack, { 
 					content: 'Saturday details',
 					position: {
 						adjust: {
@@ -96,7 +96,7 @@
 					}
 				}));
 				
-				$('div.sunday.day').qtip( $.extend({}, shared, { 
+				$('div.sunday.day').qtip( $.extend({}, shablack, { 
 					content: 'Sunday details',
 					position: {
 						adjust: {
@@ -142,6 +142,8 @@
 				background-color: #FFF; 
 				padding: 0px;
 				margin: 0px;
+				font-family: "calluna",sans-serif;
+				
 			}
 			
 			div {
@@ -149,19 +151,22 @@
 				text-align: center;	
 				width: 100%;
 			}
-			
-			p { 
-				font-family: "calluna",sans-serif;
-			}
 	
 			div.logo {
  				font-family: "bodedo",sans-serif;
  				font-weight: 300;
  				font-style: normal;
- 				font-size: 40px;
+ 				font-size: 48px;
 				width: 27%;
 				text-align: left;
-				border: 1px solid black;
+				/*border: 1px solid black;*/
+			}
+			
+			div.right {
+				float:right;
+				padding-right: 25px;
+				text-align: right;
+				font-size: 38px;
 			}
 
 			div.header {
@@ -215,7 +220,8 @@
 			}
 			
 			div.bodyContent p {
-				padding: 5px 40px;
+				padding: 5px 25px;
+				text-align: left;
 			}
 			
 			.hidden { display: none; }
@@ -229,7 +235,7 @@
 				width: 175px;
 				padding: 15px;
 				margin: 0px 10px;
-				border: 1px solid red;
+				border: 1px solid black;
 			}
 			
 			span.day {
@@ -246,6 +252,40 @@
   				color: purple;
   				font-weigth: 500;
   				font-size: 20px;
+			}
+			
+			div.townContainer {
+				margin: 0px 40px;
+			}
+			
+			div.town {
+				text-align: center;
+				width: 290px;
+				padding: 15px;
+				margin: 0px 5px;
+				float: left;
+			}
+			
+			div.town.rightBorder {
+				border-right: 1px solid;
+			}
+			
+			span.town {
+			  	font-family: "bodedo",sans-serif;
+  				font-weigth: 300;
+  				font-style: normal;
+  				font-size: 32px;
+			}
+			
+			div.town ul {
+				text-align: left;
+				padding-left: 10px;
+				list-style-type : none;
+			}
+			
+			div.town ul.nested {
+				list-style-type : circle;
+
 			}
 			
 			/* Pick whatever class name you want */
@@ -276,8 +316,8 @@
   	<div class="bodyDiv">
 		<div class="header">		
 			<div class="logo">
-				Fall. <br/>
-				In Love.&nbsp;&nbsp;10.19.13
+				<div class="right">10.19.13<br/></div>
+				Fall. In Love. <br/>
 			</div>
 			<div class="headerCol">
 				<p class="menuItem"><a class="menuItem" href="#welcome">Welcome</a></p>		
@@ -294,7 +334,7 @@
 			<div class="sectionContainer">
 				<a name="welcome"></a>
 				<h2>Welcome</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis nisl lacus, sit amet scelerisque magna. Nam pharetra, neque at lobortis facilisis, turpis turpis iaculis velit, ut tempor sapien ipsum sed mi. Nulla vel lacus id quam ornare fringilla eu vitae mi. Donec sit amet purus felis, sit amet tempor nisl. Nulla in magna eros, et dignissim ante. Phasellus sed metus a est porttitor eleifend id at tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis neque mauris, semper sit amet sodales id, ultricies faucibus magna. Sed euismod pellentesque odio, vel tincidunt nulla facilisis in. Nunc odio nunc, eleifend eget porttitor id, feugiat sed sem. Vivamus laoreet vulputate felis, ut iaculis nibh dignissim ut. Praesent pellentesque molestie metus, ut adipiscing risus congue et. Maecenas nec dui quis odio semper dapibus non non dolor. Nam faucibus tincidunt elementum.</p>
+				<p>Lorem ipsum dolor <b>sit amet,</b> consectetur adipiscing elit. Suspendisse quis nisl lacus, sit amet scelerisque magna. Nam pharetra, neque at lobortis facilisis, turpis turpis iaculis velit, ut tempor sapien ipsum sed mi. Nulla vel lacus id quam ornare fringilla eu vitae mi. Donec sit amet purus felis, sit amet tempor nisl. Nulla in magna eros, et dignissim ante. Phasellus sed metus a est porttitor eleifend id at tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis neque mauris, semper sit amet sodales id, ultricies faucibus magna. Sed euismod pellentesque odio, vel tincidunt nulla facilisis in. Nunc odio nunc, eleifend eget porttitor id, feugiat sed sem. Vivamus laoreet vulputate felis, ut iaculis nibh dignissim ut. Praesent pellentesque molestie metus, ut adipiscing risus congue et. Maecenas nec dui quis odio semper dapibus non non dolor. Nam faucibus tincidunt elementum.</p>
 
 				<div id="slides" class="imageContent">
 							<a class="fancybox" rel="fancybox-thumb" href="image/day1.jpg">
@@ -318,13 +358,13 @@
 					<span class="day">FRI</span><br/>
 					<span class="event">Drinks & Desserts</span><br/>
 					<span class="time">8pm</span><br/>
-					<span class="location">Willow Lake</span>
+					<span class="location"><a href="http://willowlakeny.com/gallery.html">Willow Lake</a></span>
 				</div>
 				<div class="day saturday">
 					<span class="day">SAT</span><br/>
 					<span class="event">Wedding!</span><br/>
 					<span class="time">4pm</span><br/>
-					The Garrison
+					<span class="location"><a href="http://www.thegarrison.com">The Garrison</a></span>
 				</div>
 				<div class="day sunday">
 					<span class="day">SUN</span><br/>
@@ -337,7 +377,33 @@
 			<div class="sectionContainer">
 			<a name="accommodations"></a>
 			<h2>Accommodations</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis nisl lacus, sit amet scelerisque magna. Nam pharetra, neque at lobortis facilisis, turpis turpis iaculis velit, ut tempor sapien ipsum sed mi. Nulla vel lacus id quam ornare fringilla eu vitae mi. Donec sit amet purus felis, sit amet tempor nisl. Nulla in magna eros, et dignissim ante. Phasellus sed metus a est porttitor eleifend id at tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis neque mauris, semper sit amet sodales id, ultricies faucibus magna. Sed euismod pellentesque odio, vel tincidunt nulla facilisis in. Nunc odio nunc, eleifend eget porttitor id, feugiat sed sem. Vivamus laoreet vulputate felis, ut iaculis nibh dignissim ut. Praesent pellentesque molestie metus, ut adipiscing risus congue et. Maecenas nec dui quis odio semper dapibus non non dolor. Nam faucibus tincidunt elementum.</p>
+			<p>On Saturday, transportation will be provided to/from the Fishkill hotels and the wedding.</p>
+				<div class="townContainer">
+					<div class="town rightBorder">
+						<span class="town">Cold Spring</span>
+						<ul>
+							<li><a href="http://www.pighillinn.com">Pig Hill Inn</a></li>
+							<li>
+								<ul class="nested">
+									<li>A three story historic building located on Main Street
+									<li>$180/night</li>
+								</ul>
+							</li>
+						</ul>
+						<ul>
+							<li><a href="http://www.hudsonhouseinn.com">Hudson House</a></li>
+							<li>
+								<ul class="nested">
+									<li>A larger inn at the end of Main street next to the Hudson
+									<li>$180/night</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="town">
+						<span class="town">Fishkill</span>
+					</div>
+				</div>
 			</div>
 		</div>
 
