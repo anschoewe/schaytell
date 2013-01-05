@@ -26,23 +26,37 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				
-				$(".fancybox").fancybox({
-					prevEffect	: 'none',
-					nextEffect	: 'none',
-					helpers	: {
-						title	: {
-							type: 'outside'
-						},
-						thumbs	: {
-							width	: 50,
-							height	: 50
+				var options = {
+						prevEffect	: 'none',
+						nextEffect	: 'none',
+						helpers	: {
+							title	: {
+								type: 'outside'
+							},
+							thumbs	: {
+								width	: 50,
+								height	: 50
+							}
 						}
-					}
+					};
+				
+				$(".fancybox").fancybox(options);
+				
+				$(".picDetails").click(function() {
+					//alert('clicked');
+					$.fancybox.open($(".fancybox"), options);
+					return false;
 				});
 				
 				// A shablack object containing all the values you want shablack between your tooltips
 				var shablack = {
 					content: 'An example tooltip',
+					show :{
+						event: 'click'
+					},
+					hide :{
+						event: 'click'
+					},
 					position: {
 						my: 'top left', 
 						at: 'bottom left',
@@ -138,12 +152,31 @@
   				color: black;
 			}
 			
-			body { 
-				background-color: #FFF; 
+			body {
+			/*
+background-image: linear-gradient(left , rgb(255,255,255) 17%, rgb(5,122,77) 100%);
+background-image: -o-linear-gradient(left , rgb(255,255,255) 17%, rgb(5,122,77) 100%);
+background-image: -moz-linear-gradient(left , rgb(255,255,255) 17%, rgb(5,122,77) 100%);
+background-image: -webkit-linear-gradient(left , rgb(255,255,255) 17%, rgb(5,122,77) 100%);
+background-image: -ms-linear-gradient(left , rgb(255,255,255) 17%, rgb(5,122,77) 100%);
+
+background-image: -webkit-gradient(
+	linear,
+	left top,
+	right top,
+	color-stop(0.17, rgb(255,255,255)),
+	color-stop(1, rgb(5,122,77))
+);
+*/
+
+				background-image:url('image/wood.jpg');
+				background-size:50% 50%;
+				background-repeat:repeat;
+
+				/*background-color: #FFF; */
 				padding: 0px;
 				margin: 0px;
 				font-family: "calluna",sans-serif;
-				
 			}
 			
 			div {
@@ -162,13 +195,17 @@
 				/*border: 1px solid black;*/
 			}
 
+			/*http://subtlepatterns.com*/
 			div.header {
-				background-color: #AA0;
+				background-color: rgba(218, 146, 46, 0.9);
+				box-shadow: 10px 5px 8px #888, -10px 5px 8px #888;
 				padding : 5px;
 				margin-right: -5px;
+				margin-bottom: 30px;
 				/*position: fixed;
 				top: 0px;
 				left: 0px;
+								background-color: #838E1D;
 				*/
 			}
 
@@ -182,6 +219,10 @@
 				text-align: left;
 				font-size: 18px;
 				margin: 5px;
+			}
+			
+			a {
+				color: #3E2300;
 			}
 				
 			.bodyDiv { 
@@ -205,7 +246,12 @@
 				margin: 0 auto;
 				text-align: left;
 				float:none;	
-				border: 1px solid black;
+				padding: 5px 35px;
+				background-color: #FFF;
+				border: 1px solid #BBB;
+				box-shadow: 10px 5px 8px #888, -10px 2px 8px #888;
+
+				overflow: hidden;
 			}
 			
 			div.bodyContent div.sectionContainer {
@@ -278,7 +324,6 @@
 			
 			div.town ul.nested {
 				list-style-type : circle;
-
 			}
 			
 			/* Pick whatever class name you want */
@@ -286,6 +331,26 @@
 				max-width: 660px;
 				min-width: 660px;
 				min-height: 200px;
+			}
+			
+			.dayDetails {
+				background-color: #838E1D;
+				padding: 2px 15px 0px 15px;
+				margin : 5px -15px -15px -15px;
+				width: 100%;
+				border-top: 1px solid black;
+				cursor:pointer;
+			}
+			
+			.picDetails {
+				float: center;
+				background-color: #838E1D;
+				padding: 2px 0px;
+				margin-left: auto;
+				margin-right: auto;
+				width: 638px;
+				border: 1px solid black;
+				cursor:pointer;
 			}
 			
 			/*! Add shadows to your tooltips in: FF3+, Chrome 2+, Opera 10.6+, IE5.5+, Safari 2+ */
@@ -307,134 +372,138 @@
   </head>
   <body>
   	<div class="bodyDiv">
-		<div class="header">		
-			<div class="logo">
-				10.19.13
-			</div>
-			<div class="headerCol">
-				<p class="menuItem"><a class="menuItem" href="#welcome">Welcome</a></p>		
-				<p class="menuItem"><a class="menuItem" href="#festivities">Festivities</a></p>		
-				<p class="menuItem"><a class="menuItem" href="#accommodations">Accommodations</a></p>		
-			</div>
-			<div class="headerCol">
-				<p class="menuItem"><a class="menuItem" href="#thingsToDo">Things to Do</a></p>		
-				<p class="menuItem"><a class="menuItem" href="#gettingAround">Getting Around</a></p>		
-				<p class="menuItem"><a class="menuItem" href="#rsvp">RSVP</a></p>		
-			</div>
-    		</div>
-		<div class="bodyContent">
-			<div class="sectionContainer">
-				<a name="welcome"></a>
-				<h2>Welcome</h2>
-				<p>Lorem ipsum dolor <b>sit amet,</b> consectetur adipiscing elit. Suspendisse quis nisl lacus, sit amet scelerisque magna. Nam pharetra, neque at lobortis facilisis, turpis turpis iaculis velit, ut tempor sapien ipsum sed mi. Nulla vel lacus id quam ornare fringilla eu vitae mi. Donec sit amet purus felis, sit amet tempor nisl. Nulla in magna eros, et dignissim ante. Phasellus sed metus a est porttitor eleifend id at tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis neque mauris, semper sit amet sodales id, ultricies faucibus magna. Sed euismod pellentesque odio, vel tincidunt nulla facilisis in. Nunc odio nunc, eleifend eget porttitor id, feugiat sed sem. Vivamus laoreet vulputate felis, ut iaculis nibh dignissim ut. Praesent pellentesque molestie metus, ut adipiscing risus congue et. Maecenas nec dui quis odio semper dapibus non non dolor. Nam faucibus tincidunt elementum.</p>
-
-				<div id="slides" class="imageContent">
-							<a class="fancybox" rel="fancybox-thumb" href="image/day1.jpg">
-								<img src="image/day1.jpg" alt="" />
-							</a>
-						<div class="hidden">
-							<a class="fancybox" rel="fancybox-thumb" href="image/eyesopen.jpg">
-								<img src="image/eyesopen.jpg" alt="" />
-							</a>
-							<a class="fancybox" rel="fancybox-thumb" href="image/duckiesfrog.jpg">
-								<img src="image/duckiesfrog.jpg" alt="" />
-							</a>
+			<div class="header">		
+				<div class="logo">
+					10.19.13
+				</div>
+				<div class="headerCol">
+					<p class="menuItem"><a class="menuItem" href="#welcome">Welcome</a></p>		
+					<p class="menuItem"><a class="menuItem" href="#festivities">Festivities</a></p>		
+					<p class="menuItem"><a class="menuItem" href="#accommodations">Accommodations</a></p>		
+				</div>
+				<div class="headerCol">
+					<p class="menuItem"><a class="menuItem" href="#thingsToDo">Things to Do</a></p>		
+					<p class="menuItem"><a class="menuItem" href="#gettingAround">Getting Around</a></p>		
+					<p class="menuItem"><a class="menuItem" href="#rsvp">RSVP</a></p>		
+				</div>
+	 		</div>
+			<div class="bodyContent">
+						<div class="sectionContainer">
+							<a name="welcome"></a>
+							<h2>Welcome</h2>
+							<p>Lorem ipsum dolor <b>sit amet,</b> consectetur adipiscing elit. Suspendisse quis nisl lacus, sit amet scelerisque magna. Nam pharetra, neque at lobortis facilisis, turpis turpis iaculis velit, ut tempor sapien ipsum sed mi. Nulla vel lacus id quam ornare fringilla eu vitae mi. Donec sit amet purus felis, sit amet tempor nisl. Nulla in magna eros, et dignissim ante. Phasellus sed metus a est porttitor eleifend id at tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis neque mauris, semper sit amet sodales id, ultricies faucibus magna. Sed euismod pellentesque odio, vel tincidunt nulla facilisis in. Nunc odio nunc, eleifend eget porttitor id, feugiat sed sem. Vivamus laoreet vulputate felis, ut iaculis nibh dignissim ut. Praesent pellentesque molestie metus, ut adipiscing risus congue et. Maecenas nec dui quis odio semper dapibus non non dolor. Nam faucibus tincidunt elementum.</p>
+			
+							<div id="slides" class="imageContent">
+										<a class="fancybox" rel="fancybox-thumb" href="image/day1.jpg">
+											<img src="image/day1.jpg" alt="" />
+										</a>
+									<div class="hidden">
+										<a class="fancybox" rel="fancybox-thumb" href="image/eyesopen.jpg">
+											<img src="image/eyesopen.jpg" alt="" />
+										</a>
+										<a class="fancybox" rel="fancybox-thumb" href="image/duckiesfrog.jpg">
+											<img src="image/duckiesfrog.jpg" alt="" />
+										</a>
+									</div>
+									<div class="picDetails">More</div>
+								</div>
+							</div>
+						<div class="sectionContainer">
+						<a name="festivities" id="festivities"></a>	
+						<h2>Festivities</h2>
+						<div class="dayContainer">
+							<div class="day friday">
+								<span class="day">FRI</span><br/>
+								<span class="event">Drinks & Desserts</span><br/>
+								<span class="time">8pm</span><br/>
+								<span class="location"><a href="http://willowlakeny.com/gallery.html">Willow Lake</a></span>
+								<div class="dayDetails">Details</div>
+							</div>
+							<div class="day saturday">
+								<span class="day">SAT</span><br/>
+								<span class="event">Wedding!</span><br/>
+								<span class="time">4pm</span><br/>
+								<span class="location"><a href="http://www.thegarrison.com">The Garrison</a></span>
+								<div class="dayDetails">Details</div>
+							</div>
+							<div class="day sunday">
+								<span class="day">SUN</span><br/>
+								<span class="event">Brunch</span><br/>
+								<span class="time">10am</span><br/>
+								<span class="location">Your Mom's House</span>
+								<div class="dayDetails">Details</div>
+							</div>
+						</div>
+						</div>
+						<div class="sectionContainer">
+						<a name="accommodations"></a>
+						<h2>Accommodations</h2>
+						<p>On Saturday, transportation will be provided to/from the Fishkill hotels and the wedding.</p>
+							<div class="townContainer">
+								<div class="town rightBorder">
+									<span class="town">Cold Spring</span>
+									<ul>
+										<li><a href="http://www.pighillinn.com">Pig Hill Inn</a></li>
+										<li>
+											<ul class="nested">
+												<li>A three story historic building located on Main Street</li>
+												<li>$180/night</li>
+											</ul>
+										</li>
+									</ul>
+									<ul>
+										<li><a href="http://www.hudsonhouseinn.com">Hudson House</a></li>
+										<li>
+											<ul class="nested">
+												<li>A larger inn at the end of Main street next to the Hudson</li>
+												<li>$180/night</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+								<div class="town">
+									<span class="town">Fishkill</span>
+									<ul>
+										<li><a href="http://hiltongardeninn3.hilton.com/en/hotels/new-york/hilton-garden-inn-poughkeepsie-fishkill-SWFFKGI/index.html">Hilton Garden Inn</a></li>
+										<li>
+											<ul class="nested">
+												<li>Includes breakfast</li>
+												<li>Checkin/Checkout: 3pm/12pm</li>
+												<li>Starts at $139/night</li>
+											</ul>
+										</li>
+									</ul>
+									<ul>
+										<li><a href="http://fishkill.house.hyatt.com/hyatt/hotels-fishkill-house/index.jsp">Hyatt House</a></li>
+										<li>
+											<ul class="nested">
+												<li>Includes breakfast</li>
+												<li>Checkin/Checkout: 4pm/12pm</li>
+												<li>Starting at $159/night</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="sectionContainer">
+							<a name="thingsToDo"></a>
+							<h2>Things to Do</h2>
+						</div>
+						<div class="sectionContainer">
+							<a name="gettingAround"></a>
+							<h2>Getting Around</h2>
+							<iframe width="660" height="380" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msa=0&amp;msid=217422305764380074633.0004cfeaf3b254ca096cf&amp;ie=UTF8&amp;t=m&amp;ll=41.461254,-73.940048&amp;spn=0.195538,0.452499&amp;z=11&amp;output=embed"></iframe><br /><small>View <a href="https://maps.google.com/maps/ms?msa=0&amp;msid=217422305764380074633.0004cfeaf3b254ca096cf&amp;ie=UTF8&amp;t=m&amp;ll=41.461254,-73.940048&amp;spn=0.195538,0.452499&amp;z=11&amp;source=embed" style="color:#0000FF;text-align:left">Schaytell Wedding</a> in a larger map</small>
+						</div>
+						<div class="sectionContainer">
+							<a name="rsvp"></a>
+							<h2>RSVP</h2>
+							
 						</div>
 					</div>
-				</div>
-			<div class="sectionContainer">
-			<a name="festivities" id="festivities"></a>	
-			<h2>Festivities</h2>
-			<div class="dayContainer">
-				<div class="day friday">
-					<span class="day">FRI</span><br/>
-					<span class="event">Drinks & Desserts</span><br/>
-					<span class="time">8pm</span><br/>
-					<span class="location"><a href="http://willowlakeny.com/gallery.html">Willow Lake</a></span>
-				</div>
-				<div class="day saturday">
-					<span class="day">SAT</span><br/>
-					<span class="event">Wedding!</span><br/>
-					<span class="time">4pm</span><br/>
-					<span class="location"><a href="http://www.thegarrison.com">The Garrison</a></span>
-				</div>
-				<div class="day sunday">
-					<span class="day">SUN</span><br/>
-					<span class="event">Brunch</span><br/>
-					<span class="time">10am</span><br/>
-					<span class="location">Your Mom's House</span>
-				</div>
+			<div>
+				<a href="/credit.html">Credits</a>
 			</div>
-			</div>
-			<div class="sectionContainer">
-			<a name="accommodations"></a>
-			<h2>Accommodations</h2>
-			<p>On Saturday, transportation will be provided to/from the Fishkill hotels and the wedding.</p>
-				<div class="townContainer">
-					<div class="town rightBorder">
-						<span class="town">Cold Spring</span>
-						<ul>
-							<li><a href="http://www.pighillinn.com">Pig Hill Inn</a></li>
-							<li>
-								<ul class="nested">
-									<li>A three story historic building located on Main Street</li>
-									<li>$180/night</li>
-								</ul>
-							</li>
-						</ul>
-						<ul>
-							<li><a href="http://www.hudsonhouseinn.com">Hudson House</a></li>
-							<li>
-								<ul class="nested">
-									<li>A larger inn at the end of Main street next to the Hudson</li>
-									<li>$180/night</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-					<div class="town">
-						<span class="town">Fishkill</span>
-						<ul>
-							<li><a href="http://hiltongardeninn3.hilton.com/en/hotels/new-york/hilton-garden-inn-poughkeepsie-fishkill-SWFFKGI/index.html">Hilton Garden Inn</a></li>
-							<li>
-								<ul class="nested">
-									<li>Includes breakfast</li>
-									<li>Checkin/Checkout: 3pm/12pm</li>
-									<li>Starts at $139/night</li>
-								</ul>
-							</li>
-						</ul>
-						<ul>
-							<li><a href="http://fishkill.house.hyatt.com/hyatt/hotels-fishkill-house/index.jsp">Hyatt House</a></li>
-							<li>
-								<ul class="nested">
-									<li>Includes breakfast</li>
-									<li>Checkin/Checkout: 4pm/12pm</li>
-									<li>Starting at $159/night</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="sectionContainer">
-				<a name="thingsToDo"></a>
-				<h2>Things to Do</h2>
-			</div>
-			<div class="sectionContainer">
-				<a name="gettingAround"></a>
-				<h2>Getting Around</h2>
-				<iframe width="660" height="380" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msa=0&amp;msid=217422305764380074633.0004cfeaf3b254ca096cf&amp;ie=UTF8&amp;t=m&amp;ll=41.461254,-73.940048&amp;spn=0.195538,0.452499&amp;z=11&amp;output=embed"></iframe><br /><small>View <a href="https://maps.google.com/maps/ms?msa=0&amp;msid=217422305764380074633.0004cfeaf3b254ca096cf&amp;ie=UTF8&amp;t=m&amp;ll=41.461254,-73.940048&amp;spn=0.195538,0.452499&amp;z=11&amp;source=embed" style="color:#0000FF;text-align:left">Schaytell Wedding</a> in a larger map</small>
-			</div>
-			<div class="sectionContainer">
-				<a name="rsvp"></a>
-				<h2>RSVP</h2>
-				
-			</div>
-		</div>
-		<div>
-			<a href="/credit.html">Credits</a>
-		</div>
     </div>
   </body>
 </html>
