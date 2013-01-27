@@ -55,8 +55,9 @@
 						event: 'click'
 					},
 					hide :{
-						event: 'click'
+						when: 'mouseout', fixed: true, delay: 600
 					},
+
 					position: {
 						my: 'top left', 
 						at: 'bottom left',
@@ -205,7 +206,7 @@ background-image: -webkit-gradient(
 				/*position: fixed;
 				top: 0px;
 				left: 0px;
-								background-color: #838E1D;
+								background-color: #9CAF84;
 				*/
 			}
 
@@ -288,7 +289,7 @@ background-image: -webkit-gradient(
 			  	font-family: "calluna",sans-serif;
   				font-weight: 700;
   				font-style: bold;
-  				color: purple;
+  				color: #6543b0;
   				font-weigth: 500;
   				font-size: 18px;
 			}
@@ -326,6 +327,10 @@ background-image: -webkit-gradient(
 				list-style-type : circle;
 			}
 			
+			.town a {
+				color: #6543b0;
+			}
+			
 			/* Pick whatever class name you want */
 			.dayToolTip {
 				max-width: 660px;
@@ -334,22 +339,23 @@ background-image: -webkit-gradient(
 			}
 			
 			.dayDetails {
-				background-color: #838E1D;
+				background-color: #9CAF84;
 				padding: 2px 15px 0px 15px;
 				margin : 5px -15px -15px -15px;
 				width: 100%;
 				border-top: 1px solid black;
 				cursor:pointer;
+				text-decoration: underline;
 			}
 			
 			.picDetails {
 				float: center;
-				background-color: #838E1D;
+				background-color: #9CAF84;
 				padding: 2px 0px;
 				margin-left: auto;
 				margin-right: auto;
-				width: 638px;
-				border: 1px solid black;
+				width: 398px;
+				border: 1px solid gray;
 				cursor:pointer;
 			}
 			
@@ -384,7 +390,7 @@ background-image: -webkit-gradient(
 				<div class="headerCol">
 					<p class="menuItem"><a class="menuItem" href="#thingsToDo">Things to Do</a></p>		
 					<p class="menuItem"><a class="menuItem" href="#gettingAround">Getting Around</a></p>		
-					<p class="menuItem"><a class="menuItem" href="#rsvp">RSVP</a></p>		
+					<p class="menuItem"><a class="menuItem" href="#registry">Registry</a></p>		
 				</div>
 	 		</div>
 			<div class="bodyContent">
@@ -394,15 +400,27 @@ background-image: -webkit-gradient(
 							<p>Lorem ipsum dolor <b>sit amet,</b> consectetur adipiscing elit. Suspendisse quis nisl lacus, sit amet scelerisque magna. Nam pharetra, neque at lobortis facilisis, turpis turpis iaculis velit, ut tempor sapien ipsum sed mi. Nulla vel lacus id quam ornare fringilla eu vitae mi. Donec sit amet purus felis, sit amet tempor nisl. Nulla in magna eros, et dignissim ante. Phasellus sed metus a est porttitor eleifend id at tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis neque mauris, semper sit amet sodales id, ultricies faucibus magna. Sed euismod pellentesque odio, vel tincidunt nulla facilisis in. Nunc odio nunc, eleifend eget porttitor id, feugiat sed sem. Vivamus laoreet vulputate felis, ut iaculis nibh dignissim ut. Praesent pellentesque molestie metus, ut adipiscing risus congue et. Maecenas nec dui quis odio semper dapibus non non dolor. Nam faucibus tincidunt elementum.</p>
 			
 							<div id="slides" class="imageContent">
-										<a class="fancybox" rel="fancybox-thumb" href="image/day1.jpg">
-											<img src="image/day1.jpg" alt="" />
+										<a class="fancybox" rel="fancybox-thumb" href="image/miara_084-Web.jpg">
+											<img src="image/miara_084-Small-Web.jpg" alt="" />
 										</a>
 									<div class="hidden">
-										<a class="fancybox" rel="fancybox-thumb" href="image/eyesopen.jpg">
-											<img src="image/eyesopen.jpg" alt="" />
+										<a class="fancybox" rel="fancybox-thumb" href="image/IMG_0089-Web.jpg">
+											<img src="image/IMG_0089-Web.jpg" alt="" />
 										</a>
-										<a class="fancybox" rel="fancybox-thumb" href="image/duckiesfrog.jpg">
-											<img src="image/duckiesfrog.jpg" alt="" />
+										<a class="fancybox" rel="fancybox-thumb" href="image/IMG_0705-Web.jpg">
+											<img src="image/IMG_0705-Web.jpg" alt="" />
+										</a>
+										<a class="fancybox" rel="fancybox-thumb" href="image/IMG_1309-Web.jpg">
+											<img src="image/IMG_1309-Web.jpg" alt="" />
+										</a>
+										<a class="fancybox" rel="fancybox-thumb" href="image/IMG_1412-Web.jpg">
+											<img src="image/IMG_1412-Web.jpg" alt="" />
+										</a>
+										<a class="fancybox" rel="fancybox-thumb" href="image/IMG_1818-Web.jpg">
+											<img src="image/IMG_1818-Web.jpg" alt="" />
+										</a>
+										<a class="fancybox" rel="fancybox-thumb" href="image/miara_095-Web.jpg">
+											<img src="image/miara_095-Web.jpg" alt="" />
 										</a>
 									</div>
 									<div class="picDetails">More</div>
@@ -496,8 +514,8 @@ background-image: -webkit-gradient(
 							<iframe width="660" height="380" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msa=0&amp;msid=217422305764380074633.0004cfeaf3b254ca096cf&amp;ie=UTF8&amp;t=m&amp;ll=41.461254,-73.940048&amp;spn=0.195538,0.452499&amp;z=11&amp;output=embed"></iframe><br /><small>View <a href="https://maps.google.com/maps/ms?msa=0&amp;msid=217422305764380074633.0004cfeaf3b254ca096cf&amp;ie=UTF8&amp;t=m&amp;ll=41.461254,-73.940048&amp;spn=0.195538,0.452499&amp;z=11&amp;source=embed" style="color:#0000FF;text-align:left">Schaytell Wedding</a> in a larger map</small>
 						</div>
 						<div class="sectionContainer">
-							<a name="rsvp"></a>
-							<h2>RSVP</h2>
+							<a name="registry"></a>
+							<h2>Registry</h2>
 							
 						</div>
 					</div>
