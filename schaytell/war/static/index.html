@@ -14,27 +14,635 @@
 		<script type="text/javascript" src="//use.typekit.net/myw4fxu.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+		<link rel="stylesheet" href="js/fancybox/source/jquery.fancybox.css?v=2.1.3" type="text/css" media="screen" />
+		<script type="text/javascript" src="js/fancybox/source/jquery.fancybox.pack.js?v=2.1.3"></script>
+		<link rel="stylesheet" href="js/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+		<script type="text/javascript" src="js/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+		
+		<script type="text/javascript" src="js/qTip2/dist/jquery.qtip.min.js"></script>
+		<link type="text/css" rel="stylesheet" href="js/qTip2/dist/jquery.qtip.css" />
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+				var options = {
+						prevEffect	: 'none',
+						nextEffect	: 'none',
+						helpers	: {
+							title	: {
+								type: 'outside'
+							},
+							thumbs	: {
+								width	: 50,
+								height	: 50
+							}
+						}
+					};
+				
+				$(".fancybox").fancybox(options);
+				
+				$(".picDetails").click(function() {
+					//alert('clicked');
+					$.fancybox.open($(".fancybox"), options);
+					return false;
+				});
+				
+				// A shablack object containing all the values you want shablack between your tooltips
+				var shablack = {
+					content: 'An example tooltip',
+					show :{
+						event: 'click'
+					},
+					hide :{
+						when: 'mouseout', 
+						event: 'unfocus', 
+						fixed: true, 
+						delay: 600
+					},
+
+					position: {
+						my: 'top left', 
+						at: 'bottom left',
+						target: $('.dayContainer')
+					}
+				};
+				
+				$('div.friday.day').qtip( $.extend({}, shablack, { 
+					content: $('#fridayTipContent'),
+					position: {
+						adjust: {
+							x: -118
+						}
+					},
+					style: {
+						classes: 'dayToolTip ui-tooltip-shadow',
+						tip: {
+							corner : true,
+							mimic: 'top center',
+							width: 20,
+							height: 10,
+							offset: 90
+						}
+					}
+				}));
+				
+				$('div.saturday.day').qtip( $.extend({}, shablack, { 
+					content: $('#saturdayTipContent'),
+					position: {
+						adjust: {
+							x: -125
+						}
+					},
+					style: {
+						classes: 'dayToolTip ui-tooltip-shadow',
+						tip: {
+							corner : true,
+							mimic: 'top center',
+							width: 20,
+							height: 10,
+							offset: 310
+						}
+					}
+				}));
+				
+				$('div.sunday.day').qtip( $.extend({}, shablack, { 
+					content: $('#sundayTipContent'),
+					position: {
+						adjust: {
+							x: -130
+						}
+					},
+					style: {
+						classes: 'dayToolTip ui-tooltip-shadow',
+						tip: {
+							corner : true,
+							mimic: 'top center',
+							width: 20,
+							height: 10,
+							offset: 530
+						}
+					}
+				}));
+				
+				//alert($('div.friday.day').offset().top);
+
+				/*
+				$(".menuItem").click(function(){
+					$('html, body').animate({
+						scrollTop: $( $(this).attr('href') ).offset().top
+					}, 500);
+					return false;
+				});​
+				*/
+				
+			});
+		</script>
+		
 		<style>
 			p.headline {
-  			font-family: "bodedo",sans-serif;
-  			font-weigth: 400;
-  			font-style: normal;
-  			font-size:48px;
-  			color: black;
+  				font-family: "bodedo",sans-serif;
+  				font-weight: 400;
+  				font-style: normal;
+  				font-size:48px;
+  				color: black;
 			}
 			
-			body { background-color: #FFF; }
+			body {
+			/*
+background-image: linear-gradient(left , rgb(255,255,255) 17%, rgb(5,122,77) 100%);
+background-image: -o-linear-gradient(left , rgb(255,255,255) 17%, rgb(5,122,77) 100%);
+background-image: -moz-linear-gradient(left , rgb(255,255,255) 17%, rgb(5,122,77) 100%);
+background-image: -webkit-linear-gradient(left , rgb(255,255,255) 17%, rgb(5,122,77) 100%);
+background-image: -ms-linear-gradient(left , rgb(255,255,255) 17%, rgb(5,122,77) 100%);
+
+background-image: -webkit-gradient(
+	linear,
+	left top,
+	right top,
+	color-stop(0.17, rgb(255,255,255)),
+	color-stop(1, rgb(5,122,77))
+);
+*/
+
+				background-image:url('image/wood.jpg');
+				background-size:50% 50%;
+				background-repeat:repeat;
+
+				/*background-color: #FFF; */
+				padding: 0px;
+				margin: 0px;
+				font-family: "calluna",sans-serif;
+			}
 			
+			ul {
+				text-align: left;
+			}
+			
+			div {
+				float: left;
+				text-align: center;	
+				width: 100%;
+			}
+	
+			div.logo {
+ 				font-family: "bodedo",sans-serif;
+ 				font-weight: 300;
+ 				font-style: normal;
+ 				font-size: 76px;
+				width: 27%;
+				text-align: left;
+				/*border: 1px solid black;*/
+			}
+
+			/*http://subtlepatterns.com*/
+			div.header {
+				background-color: rgba(218, 146, 46, 0.9);
+				box-shadow: 10px 5px 8px #888, -10px 5px 8px #888;
+				padding : 5px;
+				margin-right: -5px;
+				margin-bottom: 30px;
+				/*position: fixed;
+				top: 0px;
+				left: 0px;
+								background-color: #9CAF84;
+				*/
+			}
+
+			div.headerCol {
+				padding: 5px;
+				width: 30%;
+			}
+
+			p.menuItem {
+				display: block;		
+				text-align: left;
+				font-size: 18px;
+				margin: 5px;
+			}
+			
+			a {
+				color: #3E2300;
+			}
+				
 			.bodyDiv { 
 				text-align: center;
-				}
+				padding: 0px ;
+				width: 100%;
+				/*position: absolute;
+				top: 105px;*/
+			}
+			
+			h2 {
+				margin: 10px 0px;
+				text-align: left;
+				font-family: "bodedo",sans-serif;
+  			font-style: normal;
+  			font-size: 35px;
+			}
+			
+			h3 {
+				margin: 10px 0px;
+				text-align: left;
+				font-family: "bodedo",sans-serif;
+  			font-style: normal;
+			}
+
+			div.bodyContent {
+				width: 768px;
+				margin: 0 auto;
+				text-align: left;
+				float:none;	
+				padding: 5px 35px;
+				background-color: #FFF;
+				border: 1px solid #BBB;
+				box-shadow: 10px 5px 8px #888, -10px 2px 8px #888;
+
+				overflow: hidden;
+			}
+			
+			div.bodyContent div.sectionContainer {
+				margin: 0px 0px;
+			}
+			
+			div.bodyContent p {
+				padding: 5px 25px;
+				text-align: left;
+				margin: 0px 0px 0px 0px;
+			}
+			
+			.hidden { display: none; }
+			
+			div.dayContainer {
+				margin: 0px 40 10px 40px;
+			}
+			
+			div.day {
+				text-align: center;
+				width: 175px;
+				padding: 15px;
+				margin: 0px 10px;
+				border: 1px solid black;
+			}
+			
+			span.day {
+			  	font-family: "bodedo",sans-serif;
+  				font-weigth: 300;
+  				font-style: normal;
+  				font-size: 40px;
+			}
+			
+			span.event {
+			  	font-family: "calluna",sans-serif;
+  				font-weight: 700;
+  				font-style: bold;
+  				color: #6543b0;
+  				font-weigth: 500;
+  				font-size: 18px;
+			}
+			
+			div.townContainer {
+				margin: 0px 40px;
+			}
+			
+			div.town {
+				text-align: center;
+				width: 290px;
+				padding: 15px;
+				margin: 0px 5px;
+				float: left;
+			}
+			
+			div.town.rightBorder {
+				border-right: 1px solid;
+			}
+			
+			span.town {
+			  	font-family: "bodedo",sans-serif;
+  				font-weigth: 300;
+  				font-style: normal;
+  				font-size: 32px;
+			}
+			
+			div.town ul {
+				text-align: left;
+				padding-left: 10px;
+				list-style-type : none;
+			}
+			
+			div.town ul.nested {
+				list-style-type : circle;
+			}
+			
+			ul.todoList {
+				text-align: left;
+				padding-left: 45px;
+				list-style-type : circle;
+			}
+			
+			.town a {
+				color: #6543b0;
+			}
+			
+			/* Pick whatever class name you want */
+			.dayToolTip {
+				max-width: 660px;
+				min-width: 660px;
+				min-height: 80px;
+				background-color: #EEE5DE;
+				border-color: #EEE5DE;
+				color: #000;
+			}
+			
+			.dayDetails {
+				background-color: #9CAF84;
+				padding: 2px 15px 0px 15px;
+				margin : 5px -15px -15px -15px;
+				width: 100%;
+				border-top: 1px solid black;
+				cursor:pointer;
+				text-decoration: underline;
+			}
+			
+			.picDetails {
+				float: none;
+				background-color: #9CAF84;
+				padding: 2px 0px;
+				margin-top: -4px;
+				margin-left: auto;
+				margin-right: auto;
+				width: 398px;
+				border: 1px solid gray;
+				cursor:pointer;
+				text-decoration: underline;
+			}
+			
+			/*! Add shadows to your tooltips in: FF3+, Chrome 2+, Opera 10.6+, IE5.5+, Safari 2+ */
+			.ui-tooltip-shadow{
+				-webkit-box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.35);
+				-moz-box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.35);
+				box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.35);
+			}
+ 
+			.ui-tooltip-shadow .ui-tooltip-titlebar,
+			.ui-tooltip-shadow .ui-tooltip-content{
+				filter: progid:DXImageTransform.Microsoft.Shadow(Color='gray', Direction=135, Strength=3);
+				-ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Color='gray', Direction=135, Strength=3)";
+		 
+				_margin-bottom: -3px; /* IE6 */
+				.margin-bottom: -3px; /* IE7 */
+			}
+			
+			div.dayTipDiv {
+				display: none;
+				text-align: left;
+				font-size: 16px;
+				padding: 10px;
+				line-height: 130%;
+				width: 95%;
+			}
 		</style>
   </head>
-
   <body>
   	<div class="bodyDiv">
-  		<br/>	
-    	<p class="headline">Coming Fall 2013</p>
+			<div class="header">		
+				<div class="logo">
+					10.19.13
+				</div>
+				<div class="headerCol">
+					<p class="menuItem"><a class="menuItem" href="#welcome">Welcome</a></p>		
+					<p class="menuItem"><a class="menuItem" href="#festivities">Festivities</a></p>		
+					<p class="menuItem"><a class="menuItem" href="#accommodations">Accommodations</a></p>		
+				</div>
+				<div class="headerCol">
+					<p class="menuItem"><a class="menuItem" href="#thingsToDo">Things to Do & Eat</a></p>		
+					<p class="menuItem"><a class="menuItem" href="#gettingAround">Getting Around</a></p>		
+					<p class="menuItem"><a class="menuItem" href="#registry">Registry</a></p>		
+				</div>
+	 		</div>
+			<div class="bodyContent">
+				<div class="sectionContainer">
+							<a name="welcome"></a>
+							<h2>Welcome</h2>
+							<p>
+							Hello, and welcome!  We are thrilled that each of you will join in our marriage merriment this fall!    
+							We got engaged last June while enjoying s’mores in New York’s Hudson Valley (hence those gooey Save the Date cards). 
+							We are excited to return to the Hudson Valley to get married this October.  The weekend will be full of food, fun and fall foliage.  
+							</p>
+							<p> 
+							The Hudson Valley is beautiful in the fall, so we encourage you to come and spend the weekend exploring the area. We’ve enjoyed hikes, delicious food, handpicked apples and outdoor art installations. October is also the busiest month in the valley, so we recommend booking travel, accommodations and dining reservations early.
+							</p>
+							<p>
+							We will be updating this page with additional details as the big event approaches, 
+							and formal wedding invitations will be forthcoming. In the meantime, should you have any questions, 
+							please feel free to reach out to us. Thanks for visiting!
+							</p>
+							<p>
+							Toodles,<br/> Devon & Andrew
+							</p>
+							<div id="slides" class="imageContent">
+										<a class="fancybox" rel="fancybox-thumb" href="image/miara_084-Web.jpg">
+											<img src="image/miara_084-Small-Web.jpg" alt="" />
+										</a>
+									<div class="hidden">
+										<a class="fancybox" rel="fancybox-thumb" href="image/IMG_0089-Web.jpg">
+											<img src="image/IMG_0089-Web.jpg" alt="" />
+										</a>
+										<a class="fancybox" rel="fancybox-thumb" href="image/IMG_0705-Web.jpg">
+											<img src="image/IMG_0705-Web.jpg" alt="" />
+										</a>
+										<a class="fancybox" rel="fancybox-thumb" href="image/IMG_1309-Web.jpg">
+											<img src="image/IMG_1309-Web.jpg" alt="" />
+										</a>
+										<a class="fancybox" rel="fancybox-thumb" href="image/IMG_1412-Web.jpg">
+											<img src="image/IMG_1412-Web.jpg" alt="" />
+										</a>
+										<a class="fancybox" rel="fancybox-thumb" href="image/IMG_1818-Web.jpg">
+											<img src="image/IMG_1818-Web.jpg" alt="" />
+										</a>
+										<a class="fancybox" rel="fancybox-thumb" href="image/miara_095-Web.jpg">
+											<img src="image/miara_095-Web.jpg" alt="" />
+										</a>
+									</div>
+									<div class="picDetails">More Pics</div>
+								</div>
+				</div>
+				<div class="sectionContainer">
+					<a name="festivities" id="festivities"></a>	
+					<h2>Festivities</h2>
+					<div class="dayContainer">
+						<div class="day friday">
+							<span class="day">FRI</span><br/>
+							<span class="event">Drinks & Desserts</span><br/>
+							<span class="time">~8pm</span><br/>
+							<span class="location"><a href="http://willowlakeny.com/gallery.html">Willow Lake</a></span>
+							<div class="dayDetails">Details</div>
+						</div>
+						<div class="day saturday">
+							<span class="day">SAT</span><br/>
+							<span class="event">Wedding!</span><br/>
+							<span class="time">4pm</span><br/>
+							<span class="location"><a href="http://www.thegarrison.com">The Garrison</a></span>
+							<div class="dayDetails">Details</div>
+						</div>
+						<div class="day sunday">
+							<span class="day">SUN</span><br/>
+							<span class="event">Brunch</span><br/>
+							<span class="time">10am</span><br/>
+							<span class="location"><a href="http://fishkill.house.hyatt.com/hyatt/hotels-fishkill-house/index.jsp">Hyatt House</a></span>
+							<div class="dayDetails">Details</div>
+						</div>
+						
+						<div id="fridayTipContent" class="dayTipDiv">
+							<b>Attire:</b> Snappy Casual. <br/>
+							<b>Description:</b> Welcome drinks, desserts, s’mores and more will take place on the grass (under a heated tent).  We recommend against stilettos and other lawn aerators.  Exact start time to be confirmed.
+						</div>
+						<div id="saturdayTipContent" class="dayTipDiv">
+							<b>Attire:</b> Cocktail (Suits ‘n Dresses) <br/>
+							<b>Description:</b> Showtime.  The wedding ceremony and reception will both take place at The Garrison.  After party: TBD.
+						</div>
+						<div id="sundayTipContent" class="dayTipDiv">
+							<b>Attire:</b> Whatever is on the top of your suitcase. <br/>
+							<b>Description:</b> Rise and shine for a casual brunch.
+						</div>
+						
+					</div>
+					<div class="spacer" style="clear: both; float: none;"></div>
+					<p>
+					<i>A note on kiddos: We love munchkins, and we welcome them at our Friday night and Sunday events. 
+					However, we are limiting kids at the wedding to the children of immediate family only. 
+					If you are interested in being put in touch with other parents who are looking for babysitters, 
+					please contact Devon.</i>  
+					</p>
+				</div>
+				<div class="sectionContainer">
+						<a name="accommodations"></a>
+						<h2>Accommodations</h2>
+						<p>
+						Wedding accommodations are located in the nearby towns of Cold Spring and Fishkill. We have reserved several room blocks for wedding guests. All rooms include full breakfast. Room blocks expire 4-8 weeks before the wedding, so please book early!
+						</p>
+						<p>
+						The village of <b>Cold Spring</b> is a small town on the Hudson River, which can be reached by car or train. You can walk to restaurants, antique stores and other shops. In accordance with its quaint character, Cold Spring only has inns. Guests will be responsible for their own transport to/from wedding events.
+						</p>
+						<p>
+						The town of <b>Fishkill</b> has several large chain hotels that offer a full suite of guest amenities. The hotels are located about a mile from Fishkill’s Main Street, which has several smaller restaurants and shops. There are also larger restaurants and chain stores in the area. Transportation will be provided between the Fishkill hotels and the wedding.
+						</p>
+							<div class="townContainer">
+								<div class="town rightBorder">
+									<span class="town">Cold Spring</span>
+									<ul>
+										<li><a href="http://www.pighillinn.com">Pig Hill Inn</a></li>
+										<li>
+											<ul class="nested">
+												<li>A historic, three story building located on Main Street</li>
+												<li>Rooms start at $170/night</li>
+												<li>To book, please call 845-265-9247 and mention that you are with the Klatell/Schoewe room block</li>
+												<li>Unfortunately, the inn does not accommodate kids under 7</li>
+											</ul>
+										</li>
+									</ul>
+									<ul>
+										<li><a href="http://www.hudsonhouseinn.com">Hudson House</a></li>
+										<li>
+											<ul class="nested">
+												<li>A larger inn located at edge of the Hudson River; also has a full restaurant</li>
+												<li>Rooms start at $180/night</li>
+												<li>To book, please call 845-265-9355 and mention that you are with the Klatell/Schoewe room block</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+								<div class="town">
+									<span class="town">Fishkill</span>
+									<ul>
+										<li><a href="http://hiltongardeninn.hilton.com/en/gi/groups/personalized/S/SWFFKGI-KSWED-20131018/index.jhtml?WT.mc_id=POG">Hilton Garden Inn</a></li>
+										<li>
+											<ul class="nested">
+												<li>Rooms start at $139/night</li>
+												<li>To book, please click on the link above and book via our group reservation page (“Klatell Schoewe Wedding”), or call the hotel directly and state that you are with the Klatell/Schoewe room block</li>
+												<li>Room block expires on Sept. 20th</li>
+											</ul>
+										</li>
+									</ul>
+									<ul>
+										<li><a href="http://fishkill.house.hyatt.com/hyatt/hotels-fishkill-house/index.jsp">Hyatt House</a></li>
+										<li>
+											<ul class="nested">
+												<li>Rooms start at $159/night, many rooms are one-bedroom suites</li>
+												<li>To book, please call 845-897-5757, dial “0” to reach the front desk, and mention that you are with the Klatell/Schoewe Wedding (please do not dial “3” for general reservations)</li>
+												<li>Room block expires on Sept. 20th</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<p>
+							There are also other hotels and houses in the area available for rent. We recommend searching the towns of Cold Spring, Fishkill, Garrison, and Beacon if you are looking for alternate accommodations. 
+							</p>
+						</div>
+						<div class="sectionContainer">
+							<a name="thingsToDo"></a>
+							<h2>Things to Do & Eat</h2>
+							<h3>Suggested Activities</h3>
+							<ul class="todoList">
+								<li>Outdoor aficionados and leaf-peepers (apparently that’s really a thing) come from all over New England to explore the <a href="http://alltrails.com/us/new-york/garrison">hikes</a> in the region</li>
+								<li>Those looking for a low-key day may like to stroll down Main St. in Cold Spring to do some antiquing, visit one of the many nearby <a href="http://www.fishkillfarms.com">farms</a> to enjoy fall festivals, hot cider and apple picking, or tour the beautiful <a href="http://www.boscobel.org">Boscobel House and Gardens</a></li>
+								<li>Art lovers should peruse the modern collection at <a href="http://www.diaart.org/sites/main/beacon">Dia: Beacon</a> or explore the outdoor installations at <a href="http://www.stormking.org">Storm King</a></li>
+								<li>Military buffs will want to visit <a href="http://www.westpoint.edu/SitePages/Home.aspx">West Point</a>, while culinary buffs will likely be drawn 45 minutes north to the <a href="http://www.ciachef.edu/visiting">Culinary Institute of America</a></li>		
+							</ul>
+							<h3>Where to Eat</h3>
+							<p>
+							<i>Restaurant recommendations still to come!</i>
+							</p>
+						</div>
+						<div class="sectionContainer">
+							<a name="gettingAround"></a>
+							<h2>Getting Around</h2>
+							<p>
+							Garrison, NY is located about 55 miles north of New York City, on the eastern side of the Hudson River. Once you are in the area, all wedding-related locations are within a fifteen minute drive.
+							</p>
+							<br/>
+							<iframe width="660" height="380" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msa=0&amp;msid=217422305764380074633.0004cfeaf3b254ca096cf&amp;ie=UTF8&amp;t=m&amp;ll=41.461254,-73.940048&amp;spn=0.195538,0.452499&amp;z=11&amp;output=embed"></iframe><br /><small>View <a target="_blank" href="https://maps.google.com/maps/ms?msa=0&amp;msid=217422305764380074633.0004cfeaf3b254ca096cf&amp;ie=UTF8&amp;t=m&amp;ll=41.461254,-73.940048&amp;spn=0.195538,0.452499&amp;z=11&amp;source=embed" style="color:#0000FF;text-align:left">Schaytell Wedding</a> in a larger map</small>
+							<h3>Trains</h3>
+							<p>
+							<a href="http://www.mta.info/mnr/html/planning/schedules">The Metro-North Railroad's</a> Hudson Line provides direct access to the Garrison area from NYC’s Grand Central Terminal. The train is a great option for those wishing to explore The Big Apple before or after the wedding weekend. Train travel times range from 60-75 minutes depending on where you wish to disembark:
+							</p>
+							<ul>
+								<li>To get to The Garrison, get off at GARRISON station. The Garrison is about 5 min. from the station, and local taxis will pickup/dropoff there if arrangements are made in advance.</li> 
+								<li>To get to Cold Spring, get off at COLD SPRING station. Main St. is about a 10 min walk from the station.</li>
+								<li>To get to Fishkill, get off at BEACON station. Fishkill is about 10-15min. from the station, and taxis should be available at the station or can be arranged in advance.</li>
+							</ul>
+							<h3>Planes</h3>
+							<p>
+							NYC’s three major airports, as well as two small regional airports, serve the lower Hudson Valley.  If you do fly to a NYC airport, please keep in mind that Friday night traffic around NYC can be heavy and plan accordingly. Approximate driving times for each airport are below:
+							</p>
+							<ul>
+								<li><a href="http://www.panynj.gov/airports/stewart.html">Stewart Airport (SWF)</a>: 25 min. to Fishkill, 35 min. to Garrison. Stewart is the closest area airport, but has limited direct flights</li>
+								<li><a href="http://airport.westchestergov.com">Westchester County Airport (HPN)</a>: 50 min.</li> 
+								<li>LaGuardia (LGA): 1 hr. 10 min.</li>
+								<li>Kennedy Airport (JFK): 1 hr. 15 min.</li> 
+								<li>Newark Airport (EWR): 1 hr. 20 min.</li>
+							</ul>
+							<h3>Automobiles</h3>
+							<p>
+							Garrison is roughly 1 hr. 15 min. from NYC by car. 
+							</p>
+							<p>
+							Once in the area, it is helpful to have access to a car to get around. Several car rental agencies have nearby locations. Please be sure to check operating hours (some are closed on Sundays). 
+							</p>
+							<p>
+							There are also a few taxi services in the area that can be arranged in advance, and will pickup/drop-off at airports and train stations (specific contact info to come).
+							</p>
+						</div>
+						<div class="sectionContainer">
+							<a name="registry"></a>
+							<h2>Registry</h2>
+							<p><i>Coming Soon...</i></p>
+						</div>
+					</div>
+			<div>
+				<a href="/credit.html">Credits</a>
+			</div>
     </div>
   </body>
 </html>
