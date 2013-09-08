@@ -39,6 +39,12 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				
+				//show bfast pic?
+				var showBfast = getParameterByName('bfast');
+				if(showBfast){
+					$('#bfast-img').show();
+				}
+				
 				matched = jQuery.uaMatch( navigator.userAgent );
 				if('msie' == matched.browser)
 				{
@@ -164,7 +170,16 @@
 				}));
 				
 			});
-		</script>
+			
+
+	function getParameterByName(name) {
+		name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), results = regex
+				.exec(location.search);
+		return results == null ? "" : decodeURIComponent(results[1]
+				.replace(/\+/g, " "));
+	}
+</script>
 		
 		<style>
 			p.headline {
@@ -424,6 +439,12 @@
 				text-align:right;
 				display: none;
 			}
+			
+			#bfast-img {
+				display: none;
+				float: right;
+				height: 110px;
+			}
 		</style>
   </head>
   <body>
@@ -526,8 +547,10 @@
 							<b>Description:</b> Showtime.  The wedding ceremony and reception will both take place at The Garrison.  After party: TBD.
 						</div>
 						<div id="sundayTipContent" class="dayTipDiv">
+							<img id="bfast-img" src="image/prince-bfast.jpeg" />
 							<b>Attire:</b> Whatever is on the top of your suitcase. <br/>
 							<b>Description:</b> Rise and shine for a casual brunch.
+							
 						</div>
 						
 					</div>
